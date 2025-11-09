@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\ApplicantController;
 use App\Http\Controllers\AuthController;
+use App\Http\Controllers\JobController;
 use App\Http\Controllers\ManagerController;
 use Illuminate\Support\Facades\Route;
 Route::middleware('guest')->group(function () {
@@ -12,6 +13,7 @@ Route::middleware('guest')->group(function () {
 });
 Route::middleware('auth:managers')->group(function () {
     Route::get('/managers/dashboard',[ManagerController::class,'dashboard'])->name('manager.dashboard');
+    Route::resource('/jobs', JobController::class);
     Route::post('/managers/logout',[AuthController::class,'managerLogout'])->name('manager.logout');
 });
 Route::middleware('auth:applicants')->group(function () {

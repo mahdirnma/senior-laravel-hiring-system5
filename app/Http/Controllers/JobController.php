@@ -13,7 +13,8 @@ class JobController extends Controller
      */
     public function index()
     {
-        //
+        $jobs = Job::where('is_active',1)->paginate(10);
+        return view('jobs.index',compact('jobs'));
     }
 
     /**
