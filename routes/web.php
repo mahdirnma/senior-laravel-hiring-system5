@@ -10,5 +10,7 @@ Route::middleware('guest')->group(function () {
     Route::post('/applicantLogin',[AuthController::class,'applicantLogin'])->name('applicant.login');
 });
 Route::middleware('auth:managers')->group(function () {
-    Route::get('/managerDashboard',[ManagerController::class,'dashboard'])->name('manager.dashboard');
+    Route::get('/managers/dashboard',[ManagerController::class,'dashboard'])->name('manager.dashboard');
+    Route::post('/managers/logout',[AuthController::class,'managerLogout'])->name('manager.logout');
 });
+
