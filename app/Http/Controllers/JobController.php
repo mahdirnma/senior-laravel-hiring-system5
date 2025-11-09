@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Company;
 use App\Models\Job;
 use App\Http\Requests\StoreJobRequest;
 use App\Http\Requests\UpdateJobRequest;
@@ -22,7 +23,8 @@ class JobController extends Controller
      */
     public function create()
     {
-        //
+        $companies=Company::where('is_active',1)->get();
+        return view('jobs.create',compact('companies'));
     }
 
     /**
@@ -30,7 +32,11 @@ class JobController extends Controller
      */
     public function store(StoreJobRequest $request)
     {
-        //
+        $job=Job::create($request->all());
+        if($job){
+            return redirect()->route('jobs.index');
+        }
+        return redirect()->back();
     }
 
     /**

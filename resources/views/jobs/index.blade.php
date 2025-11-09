@@ -21,6 +21,9 @@
                             <td class="text-center">update job</td>
                         @endauth
 --}}
+                        <td class="text-center">company</td>
+                        <td class="text-center">department</td>
+                        <td class="text-center">type</td>
                         <td class="text-center">working days</td>
                         <td class="text-center">working hours</td>
                         <td class="text-center">salary</td>
@@ -41,6 +44,9 @@
                             </td>
                             @endauth
 --}}
+                            <td class="text-center">{{$job->company->title}}</td>
+                            <td class="text-center">{{$job->department}}</td>
+                            <td class="text-center">{{$job->type}}</td>
                             <td class="text-center">{{$job->working_days}}</td>
                             <td class="text-center">{{$job->working_hours}}</td>
                             <td class="text-center">{{$job->salary}}</td>
