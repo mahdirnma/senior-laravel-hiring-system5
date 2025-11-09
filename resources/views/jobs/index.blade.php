@@ -21,6 +21,7 @@
                             <td class="text-center">update job</td>
                         @endauth
 --}}
+                        <td class="text-center">apply</td>
                         <td class="text-center">company</td>
                         <td class="text-center">department</td>
                         <td class="text-center">type</td>

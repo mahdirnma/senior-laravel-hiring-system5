@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Apply;
 use App\Models\Manager;
 use App\Http\Requests\StoreManagerRequest;
 use App\Http\Requests\UpdateManagerRequest;
@@ -11,6 +12,12 @@ class ManagerController extends Controller
     public function dashboard()
     {
         return view('manager.dashboard');
+    }
+
+    public function applies()
+    {
+        $applies = Apply::paginate(10);
+        return view('manager.applies.index',compact('applies'));
     }
     /**
      * Display a listing of the resource.
