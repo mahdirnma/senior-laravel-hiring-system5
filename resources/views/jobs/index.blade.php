@@ -34,16 +34,14 @@
                     <tbody>
                     @foreach($jobs as $job)
                         <tr>
-{{--
-                            @auth('managers')
+                            @auth('applicants')
                             <td class="text-center">
-                                <form action="{{route('student.jobs.store',compact('job'))}}" method="post">
+                                <form action="{{route('job.apply.form',compact('job'))}}" method="get">
                                     @csrf
-                                    <button type="submit" class="text-green-700 cursor-pointer">delete</button>
+                                    <button type="submit" class="text-green-700 cursor-pointer">apply</button>
                                 </form>
                             </td>
                             @endauth
---}}
                             <td class="text-center">{{$job->company->title}}</td>
                             <td class="text-center">{{$job->department}}</td>
                             <td class="text-center">{{$job->type}}</td>

@@ -18,7 +18,16 @@ class Applicant extends User
         return $this->belongsToMany(Company::class);
     }
     public function jobs(){
-        return $this->belongsToMany(Job::class);
+        return $this->belongsToMany(Job::class)
+            ->withPivot([
+                'current_status',
+                'current_company',
+                'hiring_description',
+                'resume_description',
+                'location',
+                'requested_salary',
+                'status',
+            ]);
     }
 
 }

@@ -2,10 +2,13 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\StoreApplyRequest;
+use App\Models\Applicant;
 use App\Models\Company;
 use App\Models\Job;
 use App\Http\Requests\StoreJobRequest;
 use App\Http\Requests\UpdateJobRequest;
+use Illuminate\Support\Facades\Auth;
 
 class JobController extends Controller
 {
@@ -69,5 +72,21 @@ class JobController extends Controller
     public function destroy(Job $job)
     {
         //
+    }
+
+    public function applyForm(Job $job)
+    {
+        return view('jobs.apply',compact('job'));
+    }
+    public function apply(StoreApplyRequest $request, Job $job){
+        $applicant=Auth::guard('applicants')->user();
+        $job->applicants()->attach($applicant->id,[
+            'current_company'=>$request->current_company,
+            'current_status'=>$request->current_status,
+            'hiring_description'=>$request->hiring_description,
+            'resume_description'=>$request->resume_description,
+            'location'=>$request->location,
+            'requested_salary'=>$request->requested_salary
+        ]);
     }
 }

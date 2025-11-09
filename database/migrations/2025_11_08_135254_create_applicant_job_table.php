@@ -18,8 +18,8 @@ return new class extends Migration
             $table->foreign('job_id')->references('id')->on('jobs')->onDelete('cascade');
             $table->foreign('applicant_id')->references('id')->on('applicants')->onDelete('cascade');
             $table->string('current_status');
-            $table->string('current-company')->nullable();
-            $table->text('hiring_description')->nullable();
+            $table->string('current_company')->nullable();
+            $table->text('hiring_description');
             $table->text('resume_description');
             $table->string('location');
             $table->bigInteger('requested_salary');

@@ -28,7 +28,16 @@ class Job extends Model
 
     public function applicants()
     {
-        return $this->belongsToMany(Applicant::class);
+        return $this->belongsToMany(Applicant::class)
+            ->withPivot([
+                'current_status',
+                'current_company',
+                'hiring_description',
+                'resume_description',
+                'location',
+                'requested_salary',
+                'status',
+            ]);
     }
 
 }

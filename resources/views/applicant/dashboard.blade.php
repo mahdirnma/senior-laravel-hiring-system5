@@ -1,4 +1,4 @@
-@extends('layout.app2')
+@extends('layout.app')
 @section('title')
     applicant's dashboard
 @endsection
