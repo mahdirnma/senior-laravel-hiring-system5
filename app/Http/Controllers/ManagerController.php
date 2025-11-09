@@ -8,6 +8,10 @@ use App\Http\Requests\UpdateManagerRequest;
 
 class ManagerController extends Controller
 {
+    public function dashboard()
+    {
+        return view('manager.dashboard');
+    }
     /**
      * Display a listing of the resource.
      */
