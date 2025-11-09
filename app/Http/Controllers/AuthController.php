@@ -11,9 +11,9 @@ class AuthController extends Controller
     public function managerLoginForm(){
         return view('auth.manager.login');
     }
-/*    public function applicantLoginForm(){
+    public function applicantLoginForm(){
         return view('auth.applicant.login');
-    }*/
+    }
 
     public function managerLogin(LoginRequest $request)
     {
@@ -23,17 +23,21 @@ class AuthController extends Controller
         }
         return redirect()->intended(route('manager.dashboard'));
     }
-/*    public function applicantLogin(LoginRequest $request){
+    public function applicantLogin(LoginRequest $request){
         $myData=$request->only('email','password');
         if (!Auth::guard('applicants')->attempt($myData)) {
             return redirect()->back();
         }
         return redirect()->intended(route('applicant.dashboard'));
     }
-*/
+
     public function managerLogout()
     {
         Auth::guard('managers')->logout();
         return redirect()->route('manager.login');
+    }
+    public function applicantLogout(){
+        Auth::guard('applicants')->logout();
+        return redirect()->route('applicant.login');
     }
 }

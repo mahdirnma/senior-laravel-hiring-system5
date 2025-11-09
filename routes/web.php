@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\ApplicantController;
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\ManagerController;
 use Illuminate\Support\Facades\Route;
@@ -13,4 +14,7 @@ Route::middleware('auth:managers')->group(function () {
     Route::get('/managers/dashboard',[ManagerController::class,'dashboard'])->name('manager.dashboard');
     Route::post('/managers/logout',[AuthController::class,'managerLogout'])->name('manager.logout');
 });
-
+Route::middleware('auth:applicants')->group(function () {
+    Route::get('/applicants/dashboard',[ApplicantController::class,'dashboard'])->name('applicant.dashboard');
+    Route::post('/applicants/logout',[AuthController::class,'applicantLogout'])->name('applicant.logout');
+});

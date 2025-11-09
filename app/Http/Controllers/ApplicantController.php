@@ -8,6 +8,10 @@ use App\Http\Requests\UpdateApplicantRequest;
 
 class ApplicantController extends Controller
 {
+    public function dashboard()
+    {
+        return view('applicant.dashboard');
+    }
     /**
      * Display a listing of the resource.
      */
