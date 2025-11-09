@@ -2,8 +2,10 @@
 
 namespace Database\Seeders;
 
+use App\Models\Manager;
 use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
+use Illuminate\Support\Facades\Hash;
 
 class ManagerSeeder extends Seeder
 {
@@ -12,6 +14,11 @@ class ManagerSeeder extends Seeder
      */
     public function run(): void
     {
-        //
+        Manager::create([
+            'name' => 'mahdi',
+            'email' => 'mahdi@gmail.com',
+            'password' => Hash::make('123'),
+        ]);
+
     }
 }
