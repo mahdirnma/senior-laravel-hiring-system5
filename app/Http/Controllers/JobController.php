@@ -100,5 +100,6 @@ class JobController extends Controller
             'location'=>$request->location,
             'requested_salary'=>$request->requested_salary
         ]);
+        return redirect()->route('jobs.index');
     }
 }

@@ -8,4 +8,4 @@ use Illuminate\Support\Facades\Route;
 Route::middleware('auth:api_applicants')->as('api.')->group(function () {
     Route::post('/applies',[ApplyController::class,'index']);
 });
-Route::post('/applicant/login', ApplicantLoginController::class)->name('applicant.login');
+Route::post('api/applicant/login', ApplicantLoginController::class)->name('api/applicant.login');
