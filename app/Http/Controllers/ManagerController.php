@@ -31,6 +31,12 @@ class ManagerController extends Controller
         }
         return redirect()->route('manager.applies');
     }
+
+    public function applyReject(Apply $apply)
+    {
+        $apply->update(['status'=>'rejected']);
+        return redirect()->route('manager.applies');
+    }
     /**
      * Display a listing of the resource.
      */
