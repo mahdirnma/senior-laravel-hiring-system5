@@ -19,6 +19,18 @@ class ManagerController extends Controller
         $applies = Apply::paginate(10);
         return view('manager.applies.index',compact('applies'));
     }
+
+    public function applyAccept(Apply $apply)
+    {
+        if ($apply->status=='pending') {
+            $apply->update(['status'=>'interview']);
+        }elseif ($apply->status=='interview') {
+            $apply->update(['status'=>'confirmed']);
+        }else{
+            return redirect()->route('manager.applies');
+        }
+        return redirect()->route('manager.applies');
+    }
     /**
      * Display a listing of the resource.
      */

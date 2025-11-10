@@ -15,16 +15,6 @@
                     <tr class="h-12 border border-gray-400 border-b-2 border-b-gray-400">
                         <td class="text-center">reject</td>
                         <td class="text-center">accept</td>
-                        {{--
-                                                <td class="text-center">change status</td>
-                                                <td class="text-center">company</td>
-                                                <td class="text-center">department</td>
-                                                <td class="text-center">type</td>
-                                                <td class="text-center">working days</td>
-                                                <td class="text-center">working hours</td>
-                                                <td class="text-center">salary</td>
-                                                <td class="text-center">description</td>
-                        --}}
                         <td class="text-center">status</td>
                         <td class="text-center">requested salary</td>
                         <td class="text-center">location</td>
@@ -40,14 +30,16 @@
                     @foreach($applies as $apply)
                         <tr>
                             <td class="text-center">
-                                <form action="{{--{{route('job.apply.form',compact('apply'))}}--}}" method="get">
+                                <form action="{{route('manager.applies.reject',compact('apply'))}}" method="post">
                                     @csrf
+                                    @method('put')
                                     <button type="submit" class="text-red-700 cursor-pointer">reject</button>
                                 </form>
                             </td>
                             <td class="text-center">
-                                <form action="{{--{{route('job.apply.form',compact('apply'))}}--}}" method="get">
+                                <form action="{{route('manager.applies.accept',compact('apply'))}}" method="post">
                                     @csrf
+                                    @method('put')
                                     <button type="submit" class="text-green-700 cursor-pointer">accept</button>
                                 </form>
                             </td>

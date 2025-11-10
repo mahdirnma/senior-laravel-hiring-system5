@@ -15,6 +15,8 @@ Route::middleware('auth:managers')->group(function () {
     Route::get('/managers/dashboard',[ManagerController::class,'dashboard'])->name('manager.dashboard');
     Route::resource('/jobs', JobController::class)->except('index');
     Route::get('/manager/applies',[ManagerController::class,'applies'])->name('manager.applies');
+    Route::put('manager/applies/{apply}/accept',[ManagerController::class,'applyAccept'])->name('manager.applies.accept');
+    Route::put('/manager/apply/{apply}/reject',[ManagerController::class,'applyReject'])->name('manager.applies.reject');
     Route::post('/managers/logout',[AuthController::class,'managerLogout'])->name('manager.logout');
 });
 Route::middleware('auth:applicants')->group(function () {
