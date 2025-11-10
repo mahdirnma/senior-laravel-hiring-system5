@@ -8,6 +8,7 @@ use App\Models\Company;
 use App\Models\Job;
 use App\Http\Requests\StoreJobRequest;
 use App\Http\Requests\UpdateJobRequest;
+use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
 class JobController extends Controller
@@ -15,10 +16,21 @@ class JobController extends Controller
     /**
      * Display a listing of the resource.
      */
-    public function index()
+    public function index(Request $request)
     {
-        $jobs = Job::where('is_active',1)->paginate(10);
-        return view('jobs.index',compact('jobs'));
+        $jobs = Job::where('is_active',1);
+        if ($request->department!=null) {
+            $jobs->where('department',$request->department);
+        }
+        if ($request->company!=null) {
+            $jobs->where('company_id',$request->company);
+        }
+        if ($request->type!=null){
+            $jobs->where('type',$request->type);
+        }
+        $jobs=$jobs->paginate(10);
+        $companies=Company::where('is_active',1)->get();
+        return view('jobs.index',compact('jobs','companies'));
     }
 
     /**

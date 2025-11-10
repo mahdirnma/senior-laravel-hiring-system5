@@ -8,14 +8,21 @@
             <form action="{{route('jobs.index')}}" method="get" class="w-full h-16 px-5 flex flex-row-reverse items-center">
                 <label for="department" class="font-semibold ml-2">: department</label>
                 <select name="department" id="department" class="w-1/6 h-8 rounded outline-0 px-2 border border-gray-400">
-                    <option value="administration">administration</option>
-                    <option value="tech_team">technical_team</option>
-                    <option value="training">training</option>
+                    <option value=""></option>
+                    <option value="administration_department">administration</option>
+                    <option value="technical_team">technical_team</option>
+                    <option value="training_department">training</option>
                 </select>
-                <label for="department" class="font-semibold mr-7 ml-2">: company</label>
-                <input type="text" name="company" id="company" class="w-1/6 h-8 rounded outline-0 px-2 border border-gray-400">
+                <label for="company" class="font-semibold ml-2 mr-7">: company</label>
+                <select name="company" id="company" class="w-1/6 h-8 rounded outline-0 px-2 border border-gray-400">
+                    <option value=""></option>
+                    @foreach($companies as $company)
+                        <option value="{{$company->id}}">{{$company->title}}</option>
+                    @endforeach
+                </select>
                 <label for="type" class="font-semibold ml-2 mr-7">: type</label>
                 <select name="type" id="type" class="w-1/6 h-8 rounded outline-0 px-2 border border-gray-400">
+                    <option value=""></option>
                     <option value="remote">remote</option>
                     <option value="hybrid">hybrid</option>
                     <option value="in_person">in_person</option>
