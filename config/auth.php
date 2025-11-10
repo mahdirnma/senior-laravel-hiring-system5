@@ -47,7 +47,11 @@ return [
         'applicants'=>[
             'driver' => 'session',
             'provider' => 'applicants',
-        ]
+        ],
+        'api_applicants' => [
+            'driver' => 'sanctum',
+            'provider' => 'api_applicants',
+        ],
     ],
 
     /*
@@ -77,6 +81,10 @@ return [
             'model' => env('AUTH_MODEL', App\Models\Manager::class),
         ],
         'applicants' => [
+            'driver' => 'eloquent',
+            'model' => env('AUTH_MODEL', App\Models\Applicant::class),
+        ],
+        'api_applicants'=>[
             'driver' => 'eloquent',
             'model' => env('AUTH_MODEL', App\Models\Applicant::class),
         ]
