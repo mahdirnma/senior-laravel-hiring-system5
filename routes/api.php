@@ -7,5 +7,6 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 Route::middleware('auth:api_applicants')->as('api.')->group(function () {
     Route::post('/applies',[ApplyController::class,'index']);
+    Route::resource('applies',ApplyController::class)->only(['show']);
 });
-Route::post('api/applicant/login', ApplicantLoginController::class)->name('api/applicant.login');
+Route::post('auth/applicant/login', ApplicantLoginController::class)->name('api/applicant.login');
