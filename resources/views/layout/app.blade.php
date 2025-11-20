@@ -27,10 +27,18 @@
                 </ul>
             </nav>
         </div>
-        <form action="{{route('manager.logout')}}" method="post">
-            @csrf
-            <button type="submit" class="text-red-700 font-bold cursor-pointer"><- logout</button>
-        </form>
+            @auth('managers')
+                <form action="{{route('manager.logout')}}" method="post">
+                    @csrf
+                    <button type="submit" class="text-red-700 font-bold cursor-pointer"><- logout</button>
+                </form>
+            @endauth
+            @auth('applicants')
+                <form action="{{route('applicant.logout')}}" method="post">
+                    @csrf
+                    <button type="submit" class="text-red-700 font-bold cursor-pointer"><- logout</button>
+                </form>
+            @endauth
     </div>
     @yield('content')
 </div>
